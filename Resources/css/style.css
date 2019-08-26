@@ -1,0 +1,583 @@
+* {       /* Doing the following in this section (and the next) is recemmended when starting new */
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #fff;
+    color: #555;
+    font-family: 'Lato', 'Arial', sans-serif; /* This shows that first Lato is to be used. If it is not available then Arial will be used. If that is not available either, any sans-serif font that is available will be used */
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+.clearfix {zoom: 1}
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    visibility: hidden;
+    height: 0;
+}
+
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+}
+
+header {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(img/hero.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;   
+    background-attachment: fixed;    /* To make the image stay in one place when scrolling*/
+}
+
+h1 {
+    margin-top: 0; 
+    margin-bottom: 20px;
+    color: #d4d2d2;
+    font-size: 200%; /* % is used to make the font-size relative to the main text size (which is defined in html class for this case) to be 20 px in this project */
+    font-weight: 300;
+    text-transform: uppercase;  
+    letter-spacing: 1px;
+    word-spacing: 3px;    
+}
+
+h2 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 150%;
+    text-transform: uppercase;   
+    letter-spacing: 0.5px;
+    text-align: center;
+    
+}
+
+h2:after { /* To display a line under h2's */
+    display: block;
+    height: 2px;
+    width: 200px;
+    background-color: #e67e22;
+    content: " ";
+    margin: 15px auto; 
+}
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 20px;
+    text-align: center; 
+}
+
+.hero-text-box {
+    position: absolute;
+    width: 1140px;
+    top: 50%;    /* to move this box at 50% height of the browser */
+    left: 50%;    /* to move this box at 50% width of the browser. So no matter the width, this text will always start from the center */
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);   /* This translates the element half of its width and height up and to the left so that the text gets centered. Also, when used with the top/left property, we are setting it to be aligned perfectly in center */   
+}
+
+/* Using : are called pseudo classes. link means that how it actually looks like as just a link. visited means when the page has already been opened. hover is when the mouse cursor is on it. active means when its clicked */
+.btn:link,
+.btn:visited,
+input[type=submit] 
+{
+    display: inline-block;
+    padding: 10px 15px 10px 15px;
+    font-weight: 300;
+    text-decoration: none;
+    border-radius: 100px;  
+    -webkit-transition: background-color 0.3s;  
+    transition: background-color 0.3s;     /* change animation duration */
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit]  {
+    background-color: #e67e22;
+    border: 1px solid #e67e22;
+    color: aliceblue;
+}
+
+.btn-ghost:link,
+.btn-ghost:visited,
+input[type=submit]  {
+    margin-left: 5px;
+    border: 1px solid #e67e22;
+    color: #e67e22;
+}
+
+/* putting hover/active option above .btn-ghost or .btn-full is not doing what it is supposed to do. Putting here after all the sub-clases somehow works */
+.btn:hover,        
+.btn:active,
+input[type=submit]  {
+    background-color: #bf6516;
+    color: aliceblue;
+}
+
+.logo_img,
+.logo_img-black {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+
+.logo_img-black {
+    display: none;  /* to hide the logo with black image when sticky navigation is not active */
+    height: 50px;
+    width: auto;
+    float: left;
+    margin-top: 5px;
+}   
+
+.main-nav {
+    float: right;
+    list-style: none;   
+    margin-top: 55px;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited {
+    text-decoration: none;
+    color: aliceblue;
+    text-transform: uppercase;
+    font-size: 80%;
+    -webkit-transition: border-bottom 0.3s;
+    transition: border-bottom 0.3s;
+    padding-bottom: 5px;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active  {
+    border-bottom: 2px solid #bf6516;
+}
+
+.sticky {
+    position: fixed;
+    -webkit-transition: background-color .5s;
+    transition: background-color .5s;
+    background-color: rgba(249, 250, 252, 0.9);
+    width: 100%;
+    top: 0;
+    left: 0;
+    -webkit-box-shadow: 0 2px 2px #bab8b8;
+            box-shadow: 0 2px 2px #bab8b8;
+    z-index: 9999;
+}
+
+/* using two classes in the same line (both starting with periods) means that the following code would only be active if the sub-class is within the major class */
+.sticky .main-nav {
+    margin-top: 15px;
+}
+
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+    text-decoration: none;
+    padding: 15px 0;
+    color: #555;
+}
+
+.sticky .logo_img { display: none; }   /* to hide the white logo image when the sticky navigation is active */
+
+.sticky .logo_img-black { display: block; }
+
+.js--wp-1,
+.js--wp-2,
+.js--wp-3 {
+    opacity: 0; 
+}
+
+/* when there is no space between classes' names this means that both classes are active at the same time */
+.js--wp-1.animated, 
+.js--wp-2.animated,
+.js--wp-3.animated {
+    opacity: 1;
+}
+
+section {
+    padding: 80px 0 80px 0;
+}
+
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%; /* Why? becasue total is 100% amd 15% left and 15% right makes 30% so width + margin is 100%*/
+}
+
+.box {
+    padding: 1%;
+}
+
+.box p {
+    font-size: 90%;
+    line-height: 145%;
+    text-align: center;    
+}
+
+.icon-big {
+    font-size: 200%;
+    text-align: center;
+    display: block;
+    color: #bf6516;
+    margin-bottom: 10px;
+}
+
+.section-features .long-copy{
+    margin-bottom: 30px;  
+}
+
+.section-meals {
+    padding: 0;
+}
+
+.meals-showcase {
+    list-style: none;
+    width: 100%;
+}
+
+.meals-showcase li {
+    display: block;
+    float: left;
+    width: 25%;     /* becasue we want to show only 4 images per row */
+}
+
+.meal-photo {
+    width: 100%;
+    background-color: #000;
+    overflow: hidden;   /* to hide the content overflow i.e. when content goes out of the browser when using transform, for example */
+}
+
+.meal-photo img {
+    opacity: 0.75;
+    width: 100%;
+    height: auto;
+    -webkit-transform: scale(1.15);
+            transform: scale(1.15);
+    -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+    transition: opacity 0.5s, -webkit-transform 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+}
+
+.meal-photo img:hover {
+    -webkit-transform: scale(1.3);
+            transform: scale(1.3);
+    opacity: 1.0;
+}
+
+.steps-box:first-child {
+    text-align: center;
+    padding-right: 3%;
+    margin-top: 30px;
+}
+
+.steps-box:last-child {
+    padding-left: 3%;
+    margin-top: 70px;
+}
+
+.app-screen {
+    width: 40%;
+}
+
+.works-step {
+    margin-bottom: 50px;
+}
+
+.works-step:last-of-type {
+    margin-bottom: 80px;
+}
+
+.works-step div {
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    font-size: 150%;
+    margin-right: 25px;
+}
+
+.btn-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.section-steps {
+    background-color: #f4f4f4;
+}
+
+.city-image {
+    display: block;
+    border-radius: 10px;
+    width: 100%;
+    height: 150px;
+    margin: 5px auto 20px auto;
+}
+
+.city-feature {
+    padding: auto;
+    padding-top: 1px;
+    padding-bottom: 1px; 
+}
+
+.city-feature i {
+    margin-right: 10px;
+}
+
+.icon-small {
+    display: inline-block;
+    width: 30px;
+    text-align: center;
+    color: #bf6516;
+    font-size: 130%;
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -4px;
+}
+
+.city-feature a:link,
+.city-feature a:visited
+{
+    text-decoration: none;
+    color: #e67e22;
+    padding-bottom: 2px;
+}
+
+.city-feature a:hover,
+.city-feature a:active
+{
+    color: #bf6516;
+    padding-bottom: 2px;
+    border-bottom: 0.5px solid #bf6516;
+    -webkit-transition: border-bottom 1s, color 0.3s;
+    transition: border-bottom 1s, color 0.3s
+}
+
+.testimonials {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.81)), to(rgba(0, 0, 0, 0.8))), url(img/back-customers.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.81), rgba(0, 0, 0, 0.8)), url(img/back-customers.jpg);
+    background-size: cover;
+    color: #d4d2d2;
+    background-attachment: fixed;        
+}
+
+blockquote {
+    padding: 2%;
+    font-style: italic;
+    line-height: 125%;
+}
+
+cite {
+    font-size: 90%;
+    margin-top: 25px;
+    display:  block;
+}
+
+blockquote:before {
+    content: "\201C";
+    font-size: 400% ;
+    display: block;
+    float: left;
+    padding-right: 5px;
+}
+
+cite img {
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.section-plans {
+    background-color: #f4f4f4;
+}
+
+.plan-block {
+    background-color: #fff;
+    border-radius: 25px;
+    width: 90%;
+    margin-left: 5%;
+    -webkit-box-shadow: 0 2px 2px #a39d9d;
+    box-shadow: 0 2px 2px #a39d9d  /* Format: X-axis Y-axis Blurr Color */
+}
+
+.plan-block div {
+    padding: 15px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.plan-block div:last-child {
+    text-align: center;
+}
+
+.plan-block ul {
+    list-style: none;
+}
+
+.plan-block ul li {
+    padding: 5px 0 5px 0;
+}
+
+.plan-price {
+    color: #e67e22;
+    font-size: 250%;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.plan-price span {
+    font-size: 50%;
+    margin-bottom: 10px;
+}
+
+.plan-price-meal {
+    text-align: center;
+}
+
+.checkmark-class {
+    margin-right: 15px;
+    color: #e67e22;
+    font-size: 75%;
+}
+
+.contact-form {
+    width: 60%;
+    margin: 0 auto 0 auto;
+}
+
+input[type=text],
+input[type=email],
+select,
+textarea {
+    width: 100%;
+    padding: 5px;
+    border-radius: 8px;  
+    border: 1px solid #cbcbcb
+}
+
+textarea {
+    height: 150px; 
+}
+
+input[type=submit] {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+input[type=checkbox] {
+    margin: 10px;
+}
+
+*:focus { outline: none; }   /* To remove the border around the text boxes when they are clicked */
+
+footer {
+    background-color: #464646;
+    color: #e67e22;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 0;
+    margin-right: 0;
+}
+    
+.footer-nav {
+    list-style:none;
+    float: left;
+    margin-bottom: 20px; 
+}
+
+.footer-nav li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li:link,
+.social-links li:visited
+{
+    color: #bf6516;
+    text-decoration: none;
+    font-size: 90%;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active
+{
+    color: #e67e22;
+    text-decoration: none;
+    font-size: 90%;
+}
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.social-links li:hover,
+.social-links li:active {
+    font-size: 100%;
+}
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+    margin-right: 2px;
+}
+
+.social-icons {
+    color: #bf6516;
+    font-size: 130%;
+}
+
+.copy-rights {
+    font-size: 75%;
+    text-align: center;
+}
+
+.ion-social-facebook-outline,
+.ion-social-twitter-outline,
+.ion-social-googleplus-outline,
+.ion-social-instagram-outline
+{
+    -webkit-transition: color 0.5s;
+    transition: color 0.5s;    
+}
+
+.ion-social-facebook-outline:hover {
+    color: #3b5998;
+}
+
+.ion-social-twitter-outline:hover {
+    color: #00aced;
+}
+
+.ion-social-googleplus-outline:hover {
+    color: #dd4b39;
+}
+
+.ion-social-instagram-outline:hover {
+    color: #517fa4;
+}
